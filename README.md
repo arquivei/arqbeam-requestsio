@@ -13,15 +13,25 @@ import (
 
 	"github.com/apache/beam/sdks/v2/go/pkg/beam"
 	"github.com/apache/beam/sdks/v2/go/pkg/beam/io/textio"
+	"github.com/arquivei/beamapp"
+
 	requestsio "github.com/arquivei/arqbeam-requestsio"
 )
 
 var (
 	pipeline *beam.Pipeline
+	version  = "dev"
 )
 
+var config struct {
+	beamapp.Config
+	GCSInputFile string
+}
+
 func main() {
+	beamapp.Bootstrap(version, &config)
 	pipeline = getPipeline(context.Background())
+	beamapp.Run(pipeline)
 }
 
 type JSONExample struct {
@@ -37,7 +47,7 @@ func getPipeline(_ context.Context) *beam.Pipeline {
 	s := pipeline.Root()
 
 	// Read some files with textio default from apache beam go sdk
-	readRows := textio.Read(s, "gs://apache-beam-samples/shakespeare/kinglear.txt")
+	readRows := textio.Read(s, config.GCSInputFile)
 
 	jsonData := beam.ParDo(s, func(elm string) JSONExample { return JSONExample{Data: elm} }, readRows)
 
