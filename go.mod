@@ -3,7 +3,7 @@ module github.com/arquivei/arqbeam-requestsio
 go 1.20
 
 require (
-	github.com/apache/beam/sdks/v2 v2.55.0
+	github.com/apache/beam/sdks/v2 v2.55.1
 	github.com/carlmjohnson/requests v0.23.5
 )
 
