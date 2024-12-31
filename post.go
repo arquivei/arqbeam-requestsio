@@ -40,7 +40,7 @@ func (fn *RequestsIO) ProcessElement(ctx context.Context, value any) []byte {
 		Fetch(ctx)
 
 	if err != nil {
-		log.Errorf(ctx, err.Error())
+		log.Errorf(ctx, "RequestIO process element failed: %v", err)
 	}
 
 	return stationResp.Bytes()
