@@ -2,7 +2,7 @@ module github.com/arquivei/arqbeam-requestsio
 
 go 1.22
 
-toolchain go1.23.5
+toolchain go1.24.0
 
 require (
 	github.com/apache/beam/sdks/v2 v2.62.0
