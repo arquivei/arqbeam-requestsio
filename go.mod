@@ -6,7 +6,7 @@ toolchain go1.27.4
 
 require (
 	github.com/apache/beam/sdks/v2 v2.77.0
-	github.com/carlmjohnson/requests v0.26.3
+	github.com/carlmjohnson/requests/v2 v2.26.0
 )
 
 require (
